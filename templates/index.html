@@ -1,0 +1,53 @@
+<!-- templates/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Select</title>
+</head>
+<body>
+    <h1>{{ message }}</h1>
+    <a href="{{ url_for('team_page') }}">Go to Second Page</a>
+
+    <form action = "/submit" method = "post">
+        <label for = "teams">Select a Team:</label>
+        <select id = "teams" name = "team"></select>
+        <input type = "submit" value = "Submit">
+    </form>
+
+<script>
+    // list of team abbreviations
+    var teamList = ["BUF", "MIA", "NE", "NYJ",
+                    "BAL", "CIN", "CLE", "PIT",
+                    "HOU", "IND", "JAX", "TEN",
+                    "DEN", "KC", "LV", "LAC",
+                    "DAL", "NYG", "PHI", "WAS",
+                    "CHI", "DET", "GB", "MIN",
+                    "ATL", "CAR", "NO", "TB",
+                    "AZ", "LAR", "SF", "SEA"];
+    
+    // function to populate the dropdown menu
+    function populateDropdown() {
+        var dropdown = document.getElementById("teams");
+
+        // First clear the previous options (might be unnecessary)
+        dropdown.innerHTML = "";
+
+        // Add options from the data
+        for (var i = 0; i < teamList.length; i++) {
+            console.log(i)
+            var option = document.createElement("option");
+            option.value = teamList[i];
+            option.text = teamList[i];
+            dropdown.appendChild(option);
+        }
+    }
+
+    // Call the function to populate the dropdown
+    populateDropdown()
+</script>
+
+</body>
+</html>
