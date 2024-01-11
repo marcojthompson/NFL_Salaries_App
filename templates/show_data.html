@@ -1,0 +1,20 @@
+<!-- templates/show_data.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Data</title>
+</head>
+<body>
+    <h1>Data from the Existing Table</h1>
+    
+    <ul>
+        {% for item in data %}
+            <li>{{ item.player_name, item.team_loc, item.cap_hit }}</li>
+            <!-- Add other fields as needed -->
+        {% endfor %}
+    </ul>
+</body>
+</html>

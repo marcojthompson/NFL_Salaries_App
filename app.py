@@ -1,6 +1,25 @@
 from flask import Flask, render_template, request, redirect, url_for
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+
+uri = ''
+app.config['SQLALCHEMY_DATABASE_URI'] = uri
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
+
+class cap_hit(db.Model):
+    __tablename__ = 'player_cap_hits'
+
+    player_name = db.Column(db.String(255), primary_key = True)
+    team_loc = db.Column(db.String(255), primary_key = True)
+    cap_hit = db.Column(db.String(255))
+
+@app.route('/show_data')
+def show_data():
+    data = cap_hit.query.all()
+    return render_template('show_data.html', data = data)
 
 @app.route('/')
 def hello_world():
