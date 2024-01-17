@@ -1,22 +1,33 @@
-<!-- templates/index.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team Select</title>
+    <link rel="stylesheet" href="./static/styles.css">
+    <title>Home Page</title>
 </head>
+
 <body>
-    <h1>{{ message }}</h1>
+    <div class="main_container">
+        <header>
+            <h1>{{ message }}</h1>
+        </header>
+        <main>
+            <section class="team_selection">
+                <form action="{{ url_for('process_form') }}" method="post">
+                    <label for="teams">Select a Team:</label>
+                    <select id="team_choice" name="team_choice"></select>
+                    <input type="submit" value="Go to page">
+                </form>
+            </section>
+        </main>
 
-    <form action = "{{ url_for('process_form') }}" method = "post">
-        <label for = "teams">Select a Team:</label>
-        <select id = "team_choice" name = "team_choice"></select>
-        <input type = "submit" value = "Go to page">
-    </form>
+    <footer>
+        <p>&copy; Within The Cap 2024</p>
+    </footer>
+    </div>
 
-<script src = "{{ url_for('static', filename = 'populateDropdown.js')}}"></script>
+<script src="{{ url_for('static', filename = 'populateDropdown.js')}}"></script>
 
 </body>
 </html>

@@ -1,0 +1,31 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 10;
+    padding: 10;
+}
+
+ul {
+    list-style-type: disc;
+    margin: 0;
+    padding: 0;
+}
+  
+li {
+    margin-bottom: 8px; 
+}
+
+.main_container {
+    max-width: 800px; 
+    margin: 0 auto;  /* Center the container horizontally */
+    background-color: #f8f8f8;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+}
+
+.player_cell {
+    background-color: #fff;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px; /* Add rounded corners */
+    margin-bottom: 15px;
+}
