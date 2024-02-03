@@ -1,17 +1,23 @@
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, sans-serif;
     margin: 10;
     padding: 10;
 }
 
-ul {
-    list-style-type: disc;
-    margin: 0;
-    padding: 0;
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
 }
   
-li {
-    margin-bottom: 8px; 
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+  
+th {
+    background-color: #f2f2f2;
 }
 
 .main_container {

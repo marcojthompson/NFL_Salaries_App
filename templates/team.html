@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./static/styles.css"> 
+    <link rel="stylesheet" href="/static/styles.css"> 
     <title>Team Page</title>
 </head>
 
@@ -16,11 +16,25 @@
             <section class="team_data">
                 <h1>This is the {{ team }} team page.</h1>
                 <h2>These are the players who are currently signed and their salaries.</h2>
-                <ul>
+                <table>
+                    <thaed>
+                    <tr>
+                        <th>Player Name</th>
+                        <th>Team</th>
+                        <th>Cap Number</th>
+                    </tr>
+                </thaed>
+                <tbody>
                     {% for item in data %}
-                        <li>{{ item.player_name, item.team_loc, item.cap_hit }}</li>
+                        <tr>
+                            <td>{{ item.player_name }}</td>
+                            <td>{{ item.team_loc }}</td>
+                            <td>{{ item.cap_hit }}</td>
+                        </tr>
                     {% endfor %}
-                </ul>
+                </tbody>
+                </table>
+                
             </section>
         </main>
     <footer>

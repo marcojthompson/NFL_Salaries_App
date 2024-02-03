@@ -18,6 +18,7 @@ class cap_hits(db.Model):
     player_name = db.Column(db.String(255), primary_key = True)
     team_loc = db.Column(db.String(255), primary_key = True)
     cap_hit = db.Column(db.String(255))
+    cap_int = db.Column(db.Integer)
 
 # Dummy route to see if database and website are properly linked
 @app.route('/show_data')
@@ -39,7 +40,7 @@ def process_form():
 # Querying database and displaying team page
 @app.route('/team/<team_choice>')
 def show_team_page(team_choice):
-    players = cap_hits.query.filter_by(team_loc = team_choice).order_by(cap_hits.cap_hit.desc()).all()
+    players = cap_hits.query.filter_by(team_loc = team_choice).order_by(cap_hits.cap_int.desc()).all()
     return render_template('team.html', team = team_choice, data = players)
 
 if __name__ == '__main__':
