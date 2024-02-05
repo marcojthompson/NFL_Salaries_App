@@ -2,6 +2,12 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, sans-serif;
     margin: 10;
     padding: 10;
+    text-align: center;
+}
+
+header {
+    background-color: #3498;
+    padding: 20px;
 }
 
 table {
@@ -25,7 +31,7 @@ th {
     margin: 0 auto;  /* Center the container horizontally */
     background-color: #f8f8f8;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
 }
 
 .player_cell {

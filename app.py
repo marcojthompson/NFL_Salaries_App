@@ -37,11 +37,22 @@ def process_form():
     team = request.form.get('team_choice')
     return redirect(url_for('show_team_page', team_choice = team))
 
+NFLTeams = {'BUF':'buffalo-bills',     'MIA':'miami-dolphins',    'NE':'new-england-patriots',   'NYJ':'new-york-jets',
+            'BAL':'baltimore-ravens',  'CIN':'cincinnati-bengals', 'CLE':'cleveland-browns',     'PIT':'pittsburgh-steelers',
+            'HOU':'houston-texans',    'IND':'indianapolis-colts', 'JAX':'jacksonville-jaguars', 'TEN':'tennessee-titans', 
+            'DEN':'denver-broncos',    'KC':'kansas-city-chiefs',  'LV':'las-vegas-raiders',     'LAC':'los-angeles-chargers',
+            'DAL':'dallas-cowboys',    'NYG':'new-york-giants',    'PHI':'philadelphia-eagles',  'WSH':'washington-commanders',
+            'CHI':'chicago-bears',     'DET':'detroit-lions',      'GB':'green-bay-packers',     'MIN':'minnesota-vikings',
+            'ATL':'atlanta-falcons',   'CAR':'carolina-panthers',  'NO':'new-orleans-saints',    'TB':'tampa-bay-buccaneers',
+            'ARI':'arizona-cardinals', 'LAR':'los-angeles-rams',  'SF':'san-francisco-49ers',    'SEA':'seattle-seahawks'
+            }
+
 # Querying database and displaying team page
 @app.route('/team/<team_choice>')
 def show_team_page(team_choice):
     players = cap_hits.query.filter_by(team_loc = team_choice).order_by(cap_hits.cap_int.desc()).all()
-    return render_template('team.html', team = team_choice, data = players)
+    team_name = NFLTeams[team_choice].replace("-", " ").title()
+    return render_template('team.html', team = team_name, data = players)
 
 if __name__ == '__main__':
     app.run(debug = True)

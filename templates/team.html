@@ -1,45 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/styles.css"> 
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <title>Team Page</title>
-</head>
+    <script>
+      $(document).ready(function () {
+        $("#myTable").DataTable({
+          order: [[0, "asc"]], // Initial sorting order based on the hidden column (index 3)
+          columnDefs: [
+            { visible: false, targets: [3] }, // Hide the fourth column (index 3)
+          ],
+        });
+      });
+    </script>
+  </head>
 
-<body>
+  <body>
     <div class="main_container">
-        <header>
-            <h1>{{ message }}</h1>
-        </header>
-        <main>
-            <section class="team_data">
-                <h1>This is the {{ team }} team page.</h1>
-                <h2>These are the players who are currently signed and their salaries.</h2>
-                <table>
-                    <thaed>
-                    <tr>
-                        <th>Player Name</th>
-                        <th>Team</th>
-                        <th>Cap Number</th>
-                    </tr>
-                </thaed>
-                <tbody>
-                    {% for item in data %}
-                        <tr>
-                            <td>{{ item.player_name }}</td>
-                            <td>{{ item.team_loc }}</td>
-                            <td>{{ item.cap_hit }}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-                </table>
-                
-            </section>
-        </main>
-    <footer>
+      <header>
+        <h1>{{ team }}</h1>
+      </header>
+      <main>
+        <section class="team_data">
+          <table id="player_table">
+            <thaed>
+              <tr>
+                <th>Player Name</th>
+                <th>Team</th>
+                <th>Cap Number</th>
+                <th style="display: none">Cap Int</th>
+              </tr>
+            </thaed>
+            <tbody>
+              {% for row in data %}
+              <tr>
+                <td>{{ row.player_name }}</td>
+                <td>{{ row.team_loc }}</td>
+                <td>{{ row.cap_hit }}</td>
+                <td style="display: none">{{ row.cap_int }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </section>
+      </main>
+      <footer>
         <p>&copy; Within The Cap 2024</p>
-    </footer>
+      </footer>
     </div>
-</body>
+  </body>
 </html>
